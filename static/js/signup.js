@@ -4,26 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (signupForm) {
         signupForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-
             const name = signupForm.querySelector('input[placeholder="Full Name"]').value.trim();
             const email = signupForm.querySelector('input[type="email"]').value.trim();
             const password = signupForm.querySelector('input[placeholder="Password"]').value.trim();
             const confirmPassword = signupForm.querySelector('input[placeholder="Confirm Password"]').value.trim();
 
             if (!name || !email || !password || !confirmPassword) {
+                e.preventDefault();
                 alert("Please fill in all fields.");
                 return;
             }
 
             if (password !== confirmPassword) {
+                e.preventDefault();
                 alert("Passwords do not match. Please try again.");
                 return;
             }
 
-            // Demo simulation of account creation
-            alert(`Welcome to Tasty Foods, ${name}! 🎉`);
-            window.location.href = "login.html"; // Redirect to login page
+            // If validation passes, let the form submit to Django backend
+            // Django will handle user creation and redirect
         });
     }
 });
